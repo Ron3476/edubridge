@@ -1,3 +1,36 @@
+# EduBridge
+
+EduBridge is a sleek, futuristic school support system built with **Flask**, **SQLAlchemy**, and **Flask-WTF**. It helps students track moods, manage study plans, and provides role-based dashboards for **students, teachers, parents, and admins**.
+
+---
+
+## Features
+
+- **Role-based dashboards**: Student, Teacher, Parent, Admin
+- **Mood tracking**: Log daily moods with optional notes
+- **Study plans**: Create and track study tasks, mark as done
+- **User management**: Admins can view all users
+- **Responsive design**: Sleek, light-themed, futuristic UI
+- **Secure authentication**: Registration and login system with hashed passwords
+
+---
+
+## Technologies Used
+
+- **Backend**: Python, Flask, SQLAlchemy
+- **Frontend**: HTML, CSS (Futuristic UI), JavaScript
+- **Forms**: Flask-WTF, WTForms
+- **Database**: SQLite (development), can be swapped with PostgreSQL/MySQL
+- **Deployment Ready**: Compatible with **Railway** and **Render**
+
+---
+
+## Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/edubridge.git
+   cd edubridge
 # EduBridge (Starter MVP)
 
 A minimal Flask app for a student success system: mood check-ins, study plans, and a simple dashboard.
@@ -5,18 +38,11 @@ A minimal Flask app for a student success system: mood check-ins, study plans, a
 ## Quick Start
 
 1) Create a virtual environment
-
-Windows PowerShell:
-```bash
-py -m venv .venv
-.\.venv\Scripts\activate
-```
-
-macOS/Linux:
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
 
 2) Install dependencies
 ```bash
@@ -24,19 +50,22 @@ pip install -r requirements.txt
 ```
 
 3) Create .env from example
-```bash
-copy .env.example .env   # Windows
-cp .env.example .env     # macOS/Linux
-```
+FLASK_SECRET_KEY=your-secret-key
+DATABASE_URL=sqlite:///edubridge.db
+FLASK_DEBUG=1
+
 
 4) Initialize the database
-```bash
-flask --app app.py init-db
-```
+bash
+>>> from app import db
+>>> db.create_all()
+>>> exit()
+
 
 5) Run the app
 ```bash
-flask --app app.py run
+python -m waitress --listen=0.0.0.0:5000 app:app
+
 ```
 Then open (https://edubridge-z9vy.onrender.com)
 
