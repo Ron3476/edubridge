@@ -38,7 +38,7 @@ flask --app app.py init-db
 ```bash
 flask --app app.py run
 ```
-Then open http://127.0.0.1:5000
+Then open [http://127.0.0.1:5000](https://edubridge-z9vy.onrender.com)
 
 ## Switching to MySQL (optional)
 - Install `pymysql`: `pip install pymysql`
