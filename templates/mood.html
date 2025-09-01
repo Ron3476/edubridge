@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Wellness - EduBridge{% endblock %}
+
+{% block content %}
+<div class="row g-4 my-4">
+    <!-- Mood Check-in Form -->
+    <div class="col-lg-5">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h3 class="h5 mb-3">Daily Mood Check-in</h3>
+                <form method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.mood.label(class="form-label") }}
+                        {{ form.mood(class="form-select") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.note.label(class="form-label") }}
+                        {{ form.note(class="form-control", rows="3", placeholder="Optional note") }}
+                    </div>
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-primary btn-block") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mood Entries Table -->
+    <div class="col-lg-7">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h3 class="h5 mb-3">Your Entries</h3>
+                {% if entries %}
+                    <div class="table-responsive">
+                        <table class="table table-striped align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Mood</th>
+                                    <th>Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for e in entries %}
+                                    <tr>
+                                        <td>{{ e.created_at.strftime('%b %d, %Y %H:%M') }}</td>
+                                        <td class="text-capitalize">{{ e.mood }}</td>
+                                        <td>{{ e.note }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted mb-0">No entries yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

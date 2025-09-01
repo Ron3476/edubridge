@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - EduBridge{% endblock %}
+
+{% block content %}
+
+{% set normalized_role = (role or current_user.role or '')|lower %}
+
+<h1 class="mb-4 text-futuristic">{{ normalized_role|capitalize }} Dashboard</h1>
+
+{% if normalized_role == "student" %}
+<div class="row g-4">
+    <!-- Mood Check-ins -->
+    <div class="col-lg-6">
+        <div class="card shadow-futuristic h-100">
+            <div class="card-body">
+                <h3 class="h5 text-futuristic-title">Recent Mood Check-ins</h3>
+                {% if recent_moods %}
+                    <ul class="list-group list-group-flush">
+                        {% for m in recent_moods %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center futuristic-item">
+                            <span>{{ m.created_at.strftime('%b %d, %Y') }} — <strong class="text-capitalize">{{ m.mood }}</strong></span>
+                            {% if m.note %}
+                            <small class="text-muted">{{ m.note[:60] }}{% if m.note|length > 60 %}…{% endif %}</small>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted mb-0">No check-ins yet.</p>
+                {% endif %}
+                <a class="btn btn-futuristic mt-3" href="{{ url_for('mood') }}">Log today's mood</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Study Plans -->
+    <div class="col-lg-6">
+        <div class="card shadow-futuristic h-100">
+            <div class="card-body">
+                <h3 class="h5 text-futuristic-title">Your Study Plans</h3>
+                {% if plans %}
+                    <ul class="list-group list-group-flush">
+                        {% for p in plans %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center futuristic-item">
+                            <div>
+                                <div><strong>{{ p.subject }}</strong> – {{ p.topic }}</div>
+                                {% if p.due_date %}
+                                <small class="text-muted">Due {{ p.due_date.strftime('%b %d, %Y') }}</small>
+                                {% endif %}
+                            </div>
+                            <span class="badge bg-{{ 'success' if p.is_done else 'secondary' }}">
+                                {{ 'Done' if p.is_done else 'Pending' }}
+                            </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted mb-0">No study tasks yet.</p>
+                {% endif %}
+                <a class="btn btn-futuristic mt-3" href="{{ url_for('study_plan') }}">Add study task</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% elif normalized_role == "teacher" %}
+<div class="card shadow-futuristic mb-4">
+    <div class="card-body">
+        <h3 class="h5 text-futuristic-title">Your Students</h3>
+        {% if students %}
+            <ul class="list-group list-group-flush">
+                {% for student in students %}
+                <li class="list-group-item futuristic-item">{{ student.name }} — {{ student.email }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">No students assigned yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% elif normalized_role == "parent" %}
+<div class="card shadow-futuristic mb-4">
+    <div class="card-body">
+        <h3 class="h5 text-futuristic-title">Your Children</h3>
+        {% if children %}
+            <ul class="list-group list-group-flush">
+                {% for child in children %}
+                <li class="list-group-item futuristic-item">{{ child.name }} — {{ child.email }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">No children linked yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% elif normalized_role == "admin" %}
+<div class="card shadow-futuristic mb-4">
+    <div class="card-body">
+        <h3 class="h5 text-futuristic-title">All Users</h3>
+        {% if users %}
+            <ul class="list-group list-group-flush">
+                {% for user in users %}
+                <li class="list-group-item futuristic-item">{{ user.name }} — {{ user.email }} ({{ user.role }})</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">No users found.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% else %}
+<p class="text-danger">Role not recognized. Please contact an administrator.</p>
+{% endif %}
+
+{% endblock %}

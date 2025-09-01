@@ -1,0 +1,166 @@
+/* General body */
+body {
+    background: #f4f8fb; /* light futuristic background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Navbar styling */
+.navbar {
+    background: linear-gradient(90deg, #ffffff, #e0f4ff);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    border-bottom-left-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 2rem;
+}
+
+.navbar .nav-link {
+    color: #0d6efd;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.3s, transform 0.25s, text-shadow 0.3s;
+}
+
+.navbar .nav-link:hover {
+    color: #ff7f50; /* neon accent */
+    transform: translateY(-2px) scale(1.1);
+    text-shadow: 0 0 8px #ff7f50, 0 0 16px #0d6efd;
+}
+
+/* Cards */
+.card {
+    border-radius: 1.25rem;
+    background: #ffffff;
+    box-shadow: 0 0 20px rgba(13, 110, 253, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    color: #1a1a1a;
+    border: 1px solid rgba(13, 110, 253, 0.15);
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 0 40px rgba(13, 110, 253, 0.3);
+    background: #e6f2ff;
+}
+
+/* Buttons */
+.btn-primary {
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #0d6efd, #3da0ff);
+    border: none;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.3), 0 0 25px rgba(0, 212, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #3da0ff, #0b5ed7);
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 0 25px rgba(13, 110, 253, 0.5), 0 0 40px rgba(0, 212, 255, 0.5);
+    text-shadow: 0 0 8px #0d6efd, 0 0 12px #3da0ff;
+}
+
+/* Tables */
+.table {
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 0 20px rgba(13, 110, 253, 0.1);
+    color: #1a1a1a;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table:hover {
+    box-shadow: 0 0 35px rgba(13, 110, 253, 0.25);
+}
+
+/* Alerts */
+.alert {
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+    font-weight: 500;
+    background: #e0f4ff;
+    color: #0d6efd;
+    box-shadow: 0 0 20px rgba(13, 110, 253, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Rows & Cards spacing */
+.row.g-4 {
+    gap: 2rem;
+}
+
+/* Smooth transitions for interactive elements */
+a, button, .nav-link, .card {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Headings: subtle neon glow */
+h1, h2, h3, h4, h5, h6 {
+    text-transform: none;
+    text-shadow: 0 0 8px rgba(13, 110, 253, 0.3), 0 0 12px rgba(0, 212, 255, 0.2);
+}
+
+/* Optional: subtle background animation for futuristic vibe */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(13,110,253,0.05), transparent 70%);
+    pointer-events: none;
+/* Futuristic card and list styling */
+.shadow-futuristic {
+    background: linear-gradient(145deg, #f0f8ff, #e0f4ff);
+    border-radius: 1.25rem;
+    box-shadow: 0 12px 30px rgba(0, 212, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.shadow-futuristic:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
+    background: linear-gradient(145deg, #e0f4ff, #d0e8ff);
+}
+
+.text-futuristic-title {
+    color: #0d6efd;
+    text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
+}
+
+.futuristic-item {
+    transition: background 0.25s, transform 0.25s;
+}
+
+.futuristic-item:hover {
+    background: rgba(13, 110, 253, 0.05);
+    transform: scale(1.02);
+}
+
+.btn-futuristic {
+    background: linear-gradient(135deg, #0d6efd, #00d4ff);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.25);
+    transition: all 0.3s ease;
+}
+
+.btn-futuristic:hover {
+    background: linear-gradient(135deg, #00d4ff, #0b5ed7);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.35);
+}
+
+
+
