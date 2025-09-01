@@ -67,7 +67,7 @@ bash
 python -m waitress --listen=0.0.0.0:5000 app:app
 
 ```
-Then open (https://edubridge-z9vy.onrender.com)
+Then open Open http://127.0.0.1:5000 in your browser.
 
 ## Switching to MySQL (optional)
 - Install `pymysql`: `pip install pymysql`
